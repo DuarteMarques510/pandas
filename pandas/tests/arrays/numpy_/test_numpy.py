@@ -124,6 +124,11 @@ def test_from_sequence_dtype():
     expected = NumpyExtensionArray(np.array([1, 2, 3], dtype="uint64"))
     tm.assert_extension_array_equal(result, expected)
 
+def test_from_sequence_with_none():
+    result=pd.array([1, None], dtype=str)
+    expected=pd.array(['1', None], dtype="object")
+    tm.assert_extension_array_equal(result, expected)
+
 
 def test_constructor_copy():
     arr = np.array([0, 1])
